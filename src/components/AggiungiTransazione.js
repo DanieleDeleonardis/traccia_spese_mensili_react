@@ -31,7 +31,7 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
 
         e.preventDefault()
 
-            validaForm('Inserisci causale')
+        validaForm('Inserisci causale')
         
 
         if(text != "" && amount != ""){
