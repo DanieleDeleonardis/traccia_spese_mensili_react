@@ -9,7 +9,7 @@ export const MonitoraggioSpese = () => {
 
 //   console.log("bilancio: " + bilancio)
 //   console.log("entrata: " + entrata)
-//   console.log("spesi: " + spesi)
+  console.log("spesi: " + spesi)
 
   const monitoraObj = {
     entrata: entrata,
