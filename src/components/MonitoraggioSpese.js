@@ -7,9 +7,9 @@ export const MonitoraggioSpese = () => {
   const entrata = bilancio.filter(item => item > 0).reduce((acc, item) => (acc += item), 0).toFixed(2)
   const spesi = (bilancio.filter(item => item < 0).reduce((acc, item) => (acc += item),0) * -1).toFixed(2)
 
-  console.log("bilancio: " + bilancio)
-  console.log("entrata: " + entrata)
-  console.log("spesi: " + spesi)
+//   console.log("bilancio: " + bilancio)
+//   console.log("entrata: " + entrata)
+//   console.log("spesi: " + spesi)
 
   const monitoraObj = {
     entrata: entrata,
