@@ -67,7 +67,7 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
                 </div>
                 <div className="col-2 px-0">
                 {/* <button id="rimuovi" onClick={() => toggle('rimuovi')} type="button" class={`btn btn-rounded bt-outline-${!add ? "danger" : "secondary"}`} data-mdb-ripple-color="dark">Spesa</button> */}
-                <button id="rimuovi" onClick={() => toggle('rimuovi')} type="button" className={`btn btn-sm btn-outline-${!add ? "dark" : "secondary"} btn-rounded ms-4`} data-mdb-ripple-color="dark">Spesa</button>
+                <button id="rimuovi" onClick={() => toggle('rimuovi')} type="button" className={`btn btn-sm btn-outline-${!add ? "danger" : "secondary"} btn-rounded ms-4`} data-mdb-ripple-color="dark">Spesa</button>
                     {/* <span id="rimuovi" onClick={() => toggle('rimuovi')} role="button" className={`badge bg-${!add ? "danger" : "secondary"}`}>Spesa</span> */}
                 </div>
             </div>

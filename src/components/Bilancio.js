@@ -14,7 +14,7 @@ export const Bilancio = () => {
         <span id="bilancio" className='ms-1 bilancio text-light'>{totale}</span>
       </div>
       <div className="col-12 text-center mb-2">
-      <div className="card-footer bg-transparent text-light badge-f">Totale movimenti: {transazioni.length}</div>
+      <div className="card-footer bg-transparent text-light badge-f">Totale movimenti {transazioni.length}</div>
       </div>
     </div>
   )
