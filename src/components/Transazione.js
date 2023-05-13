@@ -5,7 +5,7 @@ export const Transazione = ({transazione, isAggiungi, isRimuovi}) => {
     const {eliminaTransazioni} = useContext(GlobalContext)
 
     return (
-        <li className="list-group-item d-flex justify-content-between align-items-start ps-0">
+        <li className="list-group-item d-flex justify-content-between align-items-start ps-0" key={transazione.id}>
             <div className="ms-2 me-auto">
                 <div className="fw-bold">{transazione.text}</div>
                 <span id='amount' className={`fw-bold ${transazione.amount < 0 ? 'text-danger' : 'text-success'}`}>{ `${transazione.amount > 0 ? '+' : ''} ${transazione.amount}`}</span>
