@@ -12,7 +12,7 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
     const [error, setError] = useState('')
     
     const validaForm = ({messaggio}) => {
-        setError(<div class="text-danger">{messaggio}</div>)
+        setError(<div className="text-danger">{messaggio}</div>)
     }
 
     const toggle = (isClick) => {
@@ -53,22 +53,13 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
     return (
         <>
         <div className='container pip'>
-            {/* <div className="row mt-4">
-                <div className="col text-start px-0 mb-3">
-                    <h5>Aggiungi transazione</h5>
-                </div>
-            </div> */}
             <div className="row mb-2">
                 <div className="col-2 px-0">
-                {/* <button id="aggiungi" onClick={() => toggle('aggiungi')} type="button" class={`btn btn-rounded bt-outline-${!add ? "secondary" : "success"}`} data-mdb-ripple-color="dark">Entrata</button> */}
-                    {/* <span id="aggiungi" onClick={() => toggle('aggiungi')} role="button" className={`badge bg-${!add ? "secondary" : "success"}`}>Entrata</span> */}
                     <button id="aggiungi" onClick={() => toggle('aggiungi')} type="button" className={`btn btn-sm btn-outline-${!add ? "secondary" : "dark"} btn-rounded `} data-mdb-ripple-color="dark">Entrata</button>
 
                 </div>
                 <div className="col-2 px-0">
-                {/* <button id="rimuovi" onClick={() => toggle('rimuovi')} type="button" class={`btn btn-rounded bt-outline-${!add ? "danger" : "secondary"}`} data-mdb-ripple-color="dark">Spesa</button> */}
                 <button id="rimuovi" onClick={() => toggle('rimuovi')} type="button" className={`btn btn-sm btn-outline-${!add ? "danger" : "secondary"} btn-rounded ms-4`} data-mdb-ripple-color="dark">Spesa</button>
-                    {/* <span id="rimuovi" onClick={() => toggle('rimuovi')} role="button" className={`badge bg-${!add ? "danger" : "secondary"}`}>Spesa</span> */}
                 </div>
             </div>
             <div className="row mt-3">

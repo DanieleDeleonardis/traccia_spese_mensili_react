@@ -34,15 +34,9 @@ export const ListaTransazioni = ({isAggiungi, isRimuovi}) => {
 
                             </div>
                             <div className="modal-body">
-                                <ul className="list-group list-group-flush">
-                                {
-                                transazioni.map(transazione => (
-                                    <>
-                                    <Transazione key={transazione.id} transazione={transazione} isAggiungi={isAggiungi} isRimuovi={isRimuovi} deleteItems={deleteItems} />
-                                    </>
-                                )) 
-                                }
-                                </ul>
+                                
+                                    <Transazione transazioni={transazioni} isAggiungi={isAggiungi} isRimuovi={isRimuovi} deleteItems={deleteItems} />
+                                    
                             </div>
                             <div className="modal-footer">
                                 <a type="button" className="badge-f me-3 text-decoration-none text-danger" onClick={() => setDeleteItems(!deleteItems)}>Cancella transazioni</a>
