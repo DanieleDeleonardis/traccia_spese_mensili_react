@@ -1,5 +1,7 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import { GlobalContext } from '../context/GlobalState'
+import { AggiungiTransVoce } from './AggiungiTransVoce'
+import { useSpeechRecognition } from '../hooks/useSpeechRecognition'
 
 export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
     const date = new Date().toISOString().slice(0, 10)
@@ -10,6 +12,18 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
     const [data, setData] = useState(dateOra)
     const [add, setAdd] = useState(true)
     const [error, setError] = useState('')
+    const [spinnerLoading, setSpinnerLoading] = useState(false)
+    const [speechText, setSpeechText] = useState('')
+    const {
+        textR,
+        isListening,
+        startListening,
+        stopListening,
+        hasRecognitionSupport
+    } = useSpeechRecognition()
+    // const [textReg, setTextReg] = useState('')
+    // const [amountReg, setAmountReg] = useState('')
+    // const [isReg, setIsReg] = useState(false)
     
     const validaForm = ({messaggio}) => {
         setError(<div className="text-danger">{messaggio}</div>)
@@ -30,25 +44,37 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
     const onSubmit = (e) => {
 
         e.preventDefault()
-
         validaForm('Inserisci causale')
-        
+        setSpinnerLoading(true);
 
         if(text != "" && amount != ""){
-            const nuovaTransazione = {
-                id: Math.floor(Math.random() * 100000000),
-                text,
-                amount:  !add ? -amount : +amount,
-                data
-            }
-            addTransazione(nuovaTransazione)
-            setText('')
-            setAmount('')
+            setTimeout(() => {
+                const nuovaTransazione = {
+                    id: Math.floor(Math.random() * 100000000),
+                    text,
+                    amount:  !add ? -amount : +amount,
+                    data
+                }
+                addTransazione(nuovaTransazione)
+                setSpinnerLoading(false);
+                setText('')
+                setAmount('')
+            }, 1000);           
         } else{
             return
         }
     }
     
+    
+    
+    
+    
+
+    const spinning =  spinnerLoading ? <span className="spinner-border spinner-border-sm me-3" role="status" aria-hidden="true"></span> : null
+    
+    // console.log(textR);
+    // console.log(textReg);
+    // console.log(amountReg);
 
     return (
         <>
@@ -69,7 +95,7 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
                             <input id="txtInput" type="text"
                                 value={text}
                                 onChange={(e) => setText(e.target.value)}
-                                className="form-control" placeholder="Causale" />
+                                className="form-control" placeholder={textR != '' ? textR.substring(0, textR.indexOf(' ')) : "Causale"} />
                         </div>
                         <div className='error'>
                             {error}
@@ -78,7 +104,7 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
                             <input id="txtCifra" type="text"
                                 value={amount}
                                 onChange={(e) => setAmount(e.target.value)}
-                                className="form-control" placeholder="Importo" />
+                                className="form-control" placeholder={textR != '' ? String(textR.match(/\d+/g)) : "Importo"} />
                         </div>
                         <div className="col my-3">
                             <input id="txtCifra" type="date"
@@ -86,9 +112,22 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
                                 onChange={(e) => setData(e.target.value)}
                                 className="form-control" placeholder="Data" />
                         </div>
-                        <div className="d-grid gap-2">
-                            <button id="salva" className="btn btn-outline-dark" type="submit">Aggiungi transazione</button>
+                        <div className='row'>
+                        <div className='col-10 pe-0'>
+                            <div className="d-grid gap-2">
+                                <button id="salva" className="btn btn-outline-dark" type="submit">
+                                    {
+                                        spinning
+                                    }
+                                    Aggiungi transazione
+                                </button>
+                            </div>
                         </div>
+                        <div className='col-2'>
+                            <AggiungiTransVoce></AggiungiTransVoce>
+                        </div> 
+                        </div>
+                                             
                     </div>
                 </form>
             </div>
