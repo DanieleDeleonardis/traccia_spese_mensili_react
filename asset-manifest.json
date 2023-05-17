@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/traccia_spese_mensili_react/static/css/main.545b82a8.css",
-    "main.js": "/traccia_spese_mensili_react/static/js/main.5a9d8c6e.js",
+    "main.css": "/traccia_spese_mensili_react/static/css/main.1cfdd6d5.css",
+    "main.js": "/traccia_spese_mensili_react/static/js/main.44a45247.js",
     "index.html": "/traccia_spese_mensili_react/index.html",
-    "main.545b82a8.css.map": "/traccia_spese_mensili_react/static/css/main.545b82a8.css.map",
-    "main.5a9d8c6e.js.map": "/traccia_spese_mensili_react/static/js/main.5a9d8c6e.js.map"
+    "main.1cfdd6d5.css.map": "/traccia_spese_mensili_react/static/css/main.1cfdd6d5.css.map",
+    "main.44a45247.js.map": "/traccia_spese_mensili_react/static/js/main.44a45247.js.map"
   },
   "entrypoints": [
-    "static/css/main.545b82a8.css",
-    "static/js/main.5a9d8c6e.js"
+    "static/css/main.1cfdd6d5.css",
+    "static/js/main.44a45247.js"
   ]
 }
