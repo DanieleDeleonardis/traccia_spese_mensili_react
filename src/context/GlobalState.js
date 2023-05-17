@@ -38,7 +38,7 @@ export const GlobalProvider = ({children}) => {
             payload: transazione
         })
     }
-
+    
     return (
     <GlobalContext.Provider 
     value={{ transazioni: state.transazioni, eliminaTransazioni, addTransazione}}>

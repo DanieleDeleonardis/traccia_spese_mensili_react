@@ -11,6 +11,14 @@ body {
     background-size: contain;
   }
 
+  .text-grey{
+    color: #767676 /*rgb(1,124,251)*/
+  }
+
+  .text-bg{
+    color: rgb(1,124,251)
+  }
+
   .pp{
     height: 100vh
   }

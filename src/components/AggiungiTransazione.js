@@ -7,9 +7,12 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
     const date = new Date().toISOString().slice(0, 10)
     const dateOra = new Date().toISOString().slice(0, 16).replace('T', ' ')
     const {addTransazione} = useContext(GlobalContext)
-    const [text, setText] = useState('')
-    const [amount, setAmount] = useState('')
-    const [data, setData] = useState(dateOra)
+    const [formData, setFormData] = useState({
+        id: '',
+        text: '',
+        amount: '',
+        data: date
+    })
     const [add, setAdd] = useState(true)
     const [error, setError] = useState('')
     const [spinnerLoading, setSpinnerLoading] = useState(false)
@@ -41,40 +44,32 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
         }
     }   
 
-    const onSubmit = (e) => {
 
+    const submitData = (e) => {
         e.preventDefault()
         validaForm('Inserisci causale')
         setSpinnerLoading(true);
 
-        if(text != "" && amount != ""){
+        if(formData.text != "" && formData.amount != ""){
             setTimeout(() => {
                 const nuovaTransazione = {
+                    ...formData,
                     id: Math.floor(Math.random() * 100000000),
-                    text,
-                    amount:  !add ? -amount : +amount,
-                    data
+                    amount:  !add ? -formData.amount : +formData.amount
                 }
+                console.log(nuovaTransazione);
                 addTransazione(nuovaTransazione)
                 setSpinnerLoading(false);
-                setText('')
-                setAmount('')
+                formData.text = ''
+                formData.amount = ''
+                formData.data = date
             }, 1000);           
         } else{
             return
         }
     }
-    
-    
-    
-    
-    
 
     const spinning =  spinnerLoading ? <span className="spinner-border spinner-border-sm me-3" role="status" aria-hidden="true"></span> : null
-    
-    // console.log(textR);
-    // console.log(textReg);
-    // console.log(amountReg);
 
     return (
         <>
@@ -85,16 +80,16 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
 
                 </div>
                 <div className="col-2 px-0">
-                <button id="rimuovi" onClick={() => toggle('rimuovi')} type="button" className={`btn btn-sm btn-outline-${!add ? "danger" : "secondary"} btn-rounded ms-4`} data-mdb-ripple-color="dark">Spesa</button>
+                <button id="rimuovi" onClick={() => toggle('rimuovi')} type="button" className={`btn btn-sm btn-${!add ? "danger" : "outline-secondary"} btn-rounded ms-4`} data-mdb-ripple-color="dark">Spesa</button>
                 </div>
             </div>
             <div className="row mt-3">
-                <form onSubmit={onSubmit} className="px-0">
+                <form className="px-0">
                     <div className="form-row">
                         <div className="col">
                             <input id="txtInput" type="text"
-                                value={text}
-                                onChange={(e) => setText(e.target.value)}
+                                value={formData.text}
+                                onChange={(e) => setFormData({...formData, text: e.target.value})}
                                 className="form-control" placeholder={textR != '' ? textR.substring(0, textR.indexOf(' ')) : "Causale"} />
                         </div>
                         <div className='error'>
@@ -102,20 +97,21 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
                         </div>                     
                         <div className="col my-3">
                             <input id="txtCifra" type="text"
-                                value={amount}
-                                onChange={(e) => setAmount(e.target.value)}
-                                className="form-control" placeholder={textR != '' ? String(textR.match(/\d+/g)) : "Importo"} />
+                                value={formData.amount}
+                                onChange={(e) => setFormData({...formData, amount: e.target.value})}
+                                className="form-control" 
+                                placeholder={textR != '' ? String(textR.match(/\d+/g)) : "Importo"} />
                         </div>
                         <div className="col my-3">
                             <input id="txtCifra" type="date"
-                                defaultValue={date}
-                                onChange={(e) => setData(e.target.value)}
+                                value={formData.data}
+                                onChange={(e) => setFormData({...formData, data: e.target.value})}
                                 className="form-control" placeholder="Data" />
                         </div>
                         <div className='row'>
                         <div className='col-10 pe-0'>
                             <div className="d-grid gap-2">
-                                <button id="salva" className="btn btn-outline-dark" type="submit">
+                                <button id="salva" className="btn btn-outline-dark" type="submit" onClick={submitData}>
                                     {
                                         spinning
                                     }
