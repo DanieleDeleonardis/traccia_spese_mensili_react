@@ -10,7 +10,6 @@ export default (state, action) => {
 
         case 'ADD_TRANSACTION':
             const tasks = [action.payload, ...state.transazioni]
-            console.log(tasks, "task");
             localStorage.setItem("itemsTrans", JSON.stringify(tasks))
             return {
                 ...state,
