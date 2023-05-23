@@ -13,18 +13,9 @@ export const ListaTransazioni = ({isAggiungi, isRimuovi}) => {
     return (
         <div className='container'>
             <div className='row mb-4 h-75'>
-                {/* <span className="material-symbols-outlined ps-1 pe-0 text-mycolor" style={{fontSize : '30px', width: 'max-content'}} data-bs-toggle="modal" data-bs-target="#GFG">
-                    database
-                </span>
-                <span class="material-symbols-outlined text-mycolor" style={{fontSize : '30px', width: 'max-content'}}>
-                    monitoring
-                </span> */}
-                {/* <button type="button" className="btn btn-primary card-pers" data-bs-toggle="modal" data-bs-target="#GFG">
-                    Transazioni
-                </button> */}
-                <div className="card border border-top-0 rounded-0 bg-transparent mt-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#GFG">
+                <div className="card border border-top-0 rounded-0 rounded-bottom mt-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#GFG">
                     <div className="card-body d-flex justify-content-between align-items-start">
-                    <span class="badge rounded-pill bg-warning text-dark">Last</span>
+                    <span className="badge rounded-pill bg-warning text-dark">Last</span>
                         {
                         <LastTransazione transazioni={transazioni}></LastTransazione>
                         }
@@ -47,7 +38,7 @@ export const ListaTransazioni = ({isAggiungi, isRimuovi}) => {
                             </div>
                             <div className="modal-footer">
                                 <a type="button" className="badge-f me-3 text-decoration-none text-danger" onClick={() => setDeleteItems(!deleteItems)}>Cancella transazioni</a>
-                                <button type="button" className="btn btn-sm text-white card-pers" onClick={() => setDeleteItems(false)} data-bs-dismiss="modal">Chiudi</button>
+                                <button type="button" className="btn btn-sm text-white card-pers btn-outline-dark" onClick={() => setDeleteItems(false)} data-bs-dismiss="modal">Chiudi</button>
                             </div>
                         </div>
                     </div>

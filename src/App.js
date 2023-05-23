@@ -6,6 +6,7 @@ import { ListaTransazioni } from './components/ListaTransazioni';
 import { AggiungiTransazione } from './components/AggiungiTransazione';
 import { GlobalProvider } from './context/GlobalState'
 import { GraficoSpese } from './components/GraficoSpese';
+import { SelezioneModuli } from './components/SelezioneModuli';
 
 function App() {
   const [isAggiungi, setIsAggiungi] = useState(true)
@@ -27,23 +28,10 @@ function App() {
   
   return (
     <GlobalProvider>
-      <div className="container pp my-3">
+      <div className="container my-3">
         <Bilancio/>
         <MonitoraggioSpese/>
-        <div className='mt-4'>
-          <span 
-          onClick={() => setModulo('transazioni')} 
-          className={`material-symbols-outlined ps-1 pe-0 ${modulo === 'transazioni' ? 'text-bg' : ''}`} 
-          style={{ fontSize: '30px', width: 'max-content' }} >
-            database
-          </span>
-          <span 
-          onClick={() => setModulo('grafico')} 
-          className={`material-symbols-outlined ms-3 ${modulo === 'grafico' ? 'text-bg' : ''}`} 
-          style={{ fontSize: '30px', width: 'max-content' }}>
-            monitoring
-          </span>
-        </div>
+        <SelezioneModuli modulo={modulo} setModulo={setModulo} />
         {
         moduloVisibile()
         }

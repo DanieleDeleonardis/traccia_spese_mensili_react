@@ -69,6 +69,10 @@ export const AggiungiTransazione = ({isAggiungi, isRimuovi}) => {
         }
     }
 
+    const submitDataRec = () => {
+        
+    }
+
     const spinning =  spinnerLoading ? <span className="spinner-border spinner-border-sm me-3" role="status" aria-hidden="true"></span> : null
 
     return (

@@ -19,6 +19,10 @@ body {
     color: rgb(1,124,251)
   }
 
+  .border-bg{
+    border-color:  rgb(1,124,251);
+  }
+
   .pp{
     height: 100vh
   }

@@ -33,12 +33,12 @@ export const GraficoSpese = () => {
             {
                 label: 'Entrata',
                 data: mesi.map((mese) => datiMese[mese].reduce((sum, dato) => dato.amount > 0 ? sum + dato.amount : null, 0)),
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
+                backgroundColor: '#65B08E'
             },
             {
                 label: 'Spese',
                 data: mesi.map((mese) => datiMese[mese].reduce((sum, dato) => (dato.amount < 0) ? sum + dato.amount : sum, 0)),
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                backgroundColor: '#E08F8C',
             },
         ],
     };
@@ -50,7 +50,7 @@ export const GraficoSpese = () => {
                 position: 'top'
             },
             title: {
-                display: true,
+                display: false,
                 text: 'Chart.js Bar Chart',
             },
         },
@@ -58,9 +58,8 @@ export const GraficoSpese = () => {
 
 
     return (
-        <div className='container mt-2'>
-            <div className='row mb-4 h-75'>
-                <div>GraficoSpese</div>
+        <div className='container mt-4'>
+            <div className='row mb-4 h-75 p-2 border border-bg rounded shadow bg-white'>
                 <Bar data={data} options={options} />
                 {/* <Bar data={transData}></Bar> */}
             </div>
